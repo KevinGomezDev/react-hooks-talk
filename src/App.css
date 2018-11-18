@@ -21,16 +21,15 @@
 form {
   border: 1px solid #7e8085;
   border-top: 0;
-  margin-top: -10px;
-  border-radius: 10px;
-  padding: 50px 15px;
-  width: 230px;
+  width: 90%;
+  max-width: 600px;
 }
 
 .row-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding: 0 20px;
 }
 
 .row-container label {
@@ -39,7 +38,7 @@ form {
   text-align: left;
 }
 
-.row-container input {
+.row-container input, .row-container textarea {
   color: rgba(255, 255, 255, .6);
   font-size: 16px;
   background: transparent;
@@ -48,8 +47,47 @@ form {
   border-bottom: 1px solid rgba(255, 255, 255, .4);
 }
 
+.row-container textarea {
+  min-height: 60px;
+}
+
 .logo-container {
   background: #c0392b;
-  width: 264px;
-  z-index: 1
+  position: relative;
+}
+
+.logo-container h1 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.content-detail {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, .4);
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  text-align: right;
+}
+
+.content .title {
+  font-size: 30px;
+  color: #f1c40f;
+}
+
+.content .summary {
+  font-size: 18px;
+}
+
+.content .rating {
+  color: yellowgreen;
 }
