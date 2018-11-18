@@ -18,15 +18,38 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+form {
+  border: 1px solid #7e8085;
+  border-top: 0;
+  margin-top: -10px;
+  border-radius: 10px;
+  padding: 50px 15px;
+  width: 230px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.row-container label {
+  color: #ecf0f1;
+  font-size: 18px;
+  text-align: left;
+}
+
+.row-container input {
+  color: rgba(255, 255, 255, .6);
+  font-size: 16px;
+  background: transparent;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, .4);
+}
+
+.logo-container {
+  background: #c0392b;
+  width: 264px;
+  z-index: 1
 }
