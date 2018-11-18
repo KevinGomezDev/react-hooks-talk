@@ -25,7 +25,18 @@ export default function Hooks(props) {
     document.title = title
   })
 
+  const [ width, setWidth ] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
   return <React.Fragment>
+    <span>{width}</span>
     <section>
       <Logo />
       <Row label='Title'>

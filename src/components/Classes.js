@@ -5,16 +5,18 @@ import MovieDetail from '../components/MovieDetail'
 import '../App.css'
 
 class Classes extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       title: 'Peter Pan',
       summary: 'Is a 1953 American animated fantasy adventure film produced by Walt Disney.',
-      rating: '4.5'
+      rating: '4.5',
+      width: window.innerWidth,
     }
     this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleSummaryChange = this.handleSummaryChange.bind(this)
     this.handleRatingChange = this.handleRatingChange.bind(this)
+    this.handleResize = this.handleResize.bind(this)
   }
 
   handleTitleChange(e) {
@@ -29,17 +31,27 @@ class Classes extends Component {
     this.setState({ rating: e.target.value })
   }
 
-  componentWillMount () {
+  handleResize() {
+    this.setState({ width: window.innerWidth })
+  }
+
+  componentDidMount() {
+    document.title = this.state.title
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  componentDidUpdate() {
     document.title = this.state.title
   }
 
-  componentDidUpdate () {
-    document.title = this.state.title
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.handleResize)
   }
 
   render() {
     const { title, summary, rating } = this.state
     return <React.Fragment>
+      <span>{this.state.width}</span>
       <section>
       <Logo />
         <Row label='Title'>
