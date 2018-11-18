@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Row from '../components/Row'
 import Logo from '../components/Logo'
 import MovieDetail from '../components/MovieDetail'
@@ -20,6 +20,10 @@ export default function Hooks(props) {
   function handleRatingChange (e) {
     setRating(e.target.value)
   }
+
+  useEffect(() => {
+    document.title = title
+  })
 
   return <React.Fragment>
     <section>
