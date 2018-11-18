@@ -43,21 +43,27 @@ class Classes extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <form>
+          <section>
           <Logo />
-            <Row>
-              <label htmlFor='title'>Title</label>
-              <input name='title' value={title} onChange={this.handleTitleChange} />
+            <Row label='Title'>
+              <input 
+              name='title' 
+              value={title} 
+              onChange={this.handleTitleChange} />
             </Row>
-            <Row>
-              <label htmlFor='summary'>Summary</label>
-              <textarea name='summary' value={summary} onChange={this.handleSummaryChange} />
+            <Row label='Summary'>
+              <textarea 
+              name='summary' 
+              value={summary} 
+              onChange={this.handleSummaryChange} />
             </Row>
-            <Row>
-              <label htmlFor='rating'>Rating</label>
-              <input name='rating' value={rating} onChange={this.handleRatingChange} />
+            <Row label='Rating'>
+              <input 
+              name='rating' 
+              value={rating} 
+              onChange={this.handleRatingChange} />
             </Row>
-          </form>
+          </section>
           <MovieDetail {...this.state} />
         </header>
       </div>
