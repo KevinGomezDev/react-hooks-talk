@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import Row from '../components/Row'
 import Logo from '../components/Logo'
 import MovieDetail from '../components/MovieDetail'
@@ -40,34 +39,30 @@ class Classes extends Component {
 
   render() {
     const { title, summary, rating } = this.state
-    return (
-      <div className="App">
-        <header className="App-header">
-          <section>
-          <Logo />
-            <Row label='Title'>
-              <input 
-              name='title' 
-              value={title} 
-              onChange={this.handleTitleChange} />
-            </Row>
-            <Row label='Summary'>
-              <textarea 
-              name='summary' 
-              value={summary} 
-              onChange={this.handleSummaryChange} />
-            </Row>
-            <Row label='Rating'>
-              <input 
-              name='rating' 
-              value={rating} 
-              onChange={this.handleRatingChange} />
-            </Row>
-          </section>
-          <MovieDetail {...this.state} />
-        </header>
-      </div>
-    );
+    return <React.Fragment>
+      <section>
+      <Logo />
+        <Row label='Title'>
+          <input 
+          name='title' 
+          value={title} 
+          onChange={this.handleTitleChange} />
+        </Row>
+        <Row label='Summary'>
+          <textarea 
+          name='summary' 
+          value={summary} 
+          onChange={this.handleSummaryChange} />
+        </Row>
+        <Row label='Rating'>
+          <input 
+          name='rating' 
+          value={rating} 
+          onChange={this.handleRatingChange} />
+        </Row>
+      </section>
+      <MovieDetail {...this.state} />
+    </React.Fragment>
   }
 }
 

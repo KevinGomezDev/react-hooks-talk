@@ -3,14 +3,20 @@ import Classes from './components/Classes'
 import Hooks from './components/Hooks'
 class App extends Component {
   render () {
-    return this.props.useClasses 
-    ? <Classes />
-    : <Hooks />
+    return <div className="App">
+      <div className="App-header">
+      {
+        this.props.useClasses 
+        ? <Classes />
+        : <Hooks />
+      }
+      </div>
+    </div>
   }
 }
 
 App.defaultProps = {
-  useClasses: true,
+  useClasses: false,
 }
 
 export default App
