@@ -16,7 +16,7 @@ class App extends Component {
 }
 
 App.defaultProps = {
-  useClasses: false,
+  useClasses: true,
 }
 
 export default App
