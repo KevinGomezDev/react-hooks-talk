@@ -5,26 +5,38 @@ import MovieDetail from '../components/MovieDetail'
 import '../App.css'
 
 export default function Hooks(props) {
-  const [ title, setTitle ] = useState('Peter Pan')
-  const [ summary, setSummary ] = useState('Is a 1953 American animated fantasy adventure film produced by Walt Disney.')
-  const [ rating, setRating ] = useState('4.2')
-
-  function handleTitleChange (e) {
-    setTitle(e.target.value)
-  }
-
-  function handleSummaryChange (e) {
-    setSummary(e.target.value)
-  }
-
-  function handleRatingChange (e) {
-    setRating(e.target.value)
-  }
+  const title = useFormInput('Peter Pan')
+  const summary = useFormInput('Is a 1953 American animated fantasy adventure film produced by Walt Disney.')
+  const rating = useFormInput('4.2')
+  const width = useWindowWidth()
 
   useEffect(() => {
-    document.title = title
+    document.title = title.value
   })
 
+  return <React.Fragment>
+    <span>{width}</span>
+    <section>
+      <Logo />
+      <Row label='Title'>
+        <input {...title} />
+      </Row>
+      <Row label='Summary'>
+        <textarea {...summary} />
+      </Row>
+      <Row label='Rating'>
+        <input {...rating} />
+      </Row>
+    </section>
+    <MovieDetail 
+      title={title.value}
+      summary={summary.value}
+      rating={rating.value}
+    />
+  </React.Fragment>
+}
+
+function useWindowWidth() {
   const [ width, setWidth ] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -34,34 +46,18 @@ export default function Hooks(props) {
       window.removeEventListener('resize', handleResize)
     }
   })
+  return width
+}
 
-  return <React.Fragment>
-    <span>{width}</span>
-    <section>
-      <Logo />
-      <Row label='Title'>
-        <input 
-        name='title' 
-        value={title} 
-        onChange={handleTitleChange} />
-      </Row>
-      <Row label='Summary'>
-        <textarea 
-        name='summary' 
-        value={summary} 
-        onChange={handleSummaryChange} />
-      </Row>
-      <Row label='Rating'>
-        <input 
-        name='rating' 
-        value={rating} 
-        onChange={handleRatingChange} />
-      </Row>
-    </section>
-    <MovieDetail 
-      title={title}
-      summary={summary}
-      rating={rating}
-    />
-  </React.Fragment>
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue)
+  
+  function handleChange(e) {
+    setValue(e.target.value)
+  }
+
+  return {
+    value,
+    onChange: handleChange
+  }
 }
